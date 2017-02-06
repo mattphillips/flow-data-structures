@@ -94,3 +94,70 @@ test('Should return size of list when greater than 1', t => {
 
   t.is(list.size(), 5);
 });
+
+test('Should throw index out of bounds exception when trying to remove an index from an empty list', t => {
+  const list: List<string> = new LinkedList();
+
+  const error = t.throws(() => {
+    list.remove(0);
+  }, Error);
+
+  t.is(error.message, 'Index out of bounds: 0');
+});
+
+test('Should throw index out of bounds exception when trying to remove a negative index', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('Zero');
+
+  const error = t.throws(() => {
+    list.remove(-1);
+  }, Error);
+
+  t.is(error.message, 'Index out of bounds: -1');
+});
+
+test('Should throw index out of bounds when index is greater than the size of the list', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('Zero');
+
+  const error = t.throws(() => {
+    list.remove(5);
+  }, Error);
+
+  t.is(error.message, 'Index out of bounds: 5');
+});
+
+test('Should set list nodes to null when removing only entry of the list', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('A');
+  list.remove(0);
+
+  t.is(list.size(), 0);
+  t.is(list.nodes, null);
+});
+
+test('Should set parent node next to null when removing last element from a list of size 2', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('A');
+  list.add('B');
+  list.remove(1);
+
+  t.is(list.size(), 1);
+  t.is(list.nodes.getNext(), null);
+});
+
+test('Should set parent node to removed nodes next entry from a list of size greater than 2 when removing a middle entry', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('A');
+  list.add('B');
+  list.add('C');
+  list.remove(1);
+
+  t.is(list.size(), 2);
+  t.is(list.nodes.getNext().getData(), 'C');
+});

@@ -41,6 +41,39 @@ export default class LinkedList<T> {
     return current.getData();
   }
 
+  remove(index: number): void {
+
+    if (this.nodes == null || index < 0)
+    throw new Error(`Index out of bounds: ${index}`);
+
+    let parent: Node<T> = null;
+    let current: Node<T> = this.nodes;
+
+    for (let i = 0; i < index; i++) {
+
+      if (current.getNext() != null) {
+        parent = current;
+        current = current.getNext();
+
+      } else {
+        throw new Error(`Index out of bounds: ${index}`);
+      }
+    }
+
+    if (parent == null) {
+      this.nodes = null;
+
+    } else {
+
+      if (current.getNext() != null) {
+        parent.setNext(current.getNext());
+
+      } else {
+        parent.setNext(null);
+      }
+    }
+  }
+
   size(): number {
     let size: number = 0;
 
