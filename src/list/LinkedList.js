@@ -40,4 +40,24 @@ export default class LinkedList<T> {
 
     return current.getData();
   }
+
+  size(): number {
+    let size: number = 0;
+
+    if (this.nodes == null) {
+      return size;
+
+    } else {
+      let current: Node<T> = this.nodes;
+      size++;
+
+      while (current.getNext() != null) {
+        size++;
+        current = current.getNext();
+      }
+    }
+
+    return size;
+  }
+
 }

@@ -68,3 +68,29 @@ test('should return value at given index', t => {
 
   t.is(list.get(0), 'A');
 });
+
+test('Should return size 0 for an empty list', t => {
+  const list: List<string> = new LinkedList();
+
+  t.is(list.size(), 0);
+});
+
+test('Should return size 1 when only one node has been added to the list', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('A');
+
+  t.is(list.size(), 1);
+});
+
+test('Should return size of list when greater than 1', t => {
+  const list: List<string> = new LinkedList();
+
+  list.add('A');
+  list.add("B");
+  list.add("C");
+  list.add("D");
+  list.add("E");
+
+  t.is(list.size(), 5);
+});
