@@ -59,14 +59,16 @@ test('Should throw index out of bounds exception when index is larger than list 
   t.is(error.message, 'Index out of bounds: 1');
 });
 
-test('should return value at given index', t => {
-  const list: List<string> = new LinkedList();
+['A', 'B', 'C'].forEach((expected, index) => {
+  test('should return value at given index: ' + index, t => {
+    const list: List<string> = new LinkedList();
 
-  list.add('A');
-  list.add('B');
-  list.add('C');
+    list.add('A');
+    list.add('B');
+    list.add('C');
 
-  t.is(list.get(0), 'A');
+    t.is(list.get(index), expected);
+  });
 });
 
 test('Should return size 0 for an empty list', t => {
