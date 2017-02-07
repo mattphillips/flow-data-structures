@@ -4,7 +4,7 @@
   "description": "Common data structures implemented using Flow types",
   "main": "index.js",
   "scripts": {
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
+    "flow": "flow check",
     "test": "nyc ava --v",
     "test:coverage": "nyc --reporter=lcov npm t",
     "test:coveralls": "nyc report --reporter=text-lcov | coveralls"
