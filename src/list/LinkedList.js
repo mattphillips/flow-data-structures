@@ -109,4 +109,8 @@ export default class LinkedList<T> {
   filter(predicate: T => boolean): LinkedList<T> {
     return new LinkedList(this.toArray().filter(predicate));
   }
+
+  map<S>(fn: T => S): LinkedList<S> {
+    return new LinkedList(this.toArray().map(fn));
+  }
 }

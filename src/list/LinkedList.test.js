@@ -221,3 +221,29 @@ test('Should return list of items that fullfil given predicate', t => {
   t.is(actual.size(), 1);
   t.is(actual.get(0), 2);
 });
+
+test('Should return empty list when mapping over an empty list', t => {
+  const list: List<number> = new LinkedList();
+  const id = (x: number): number => x;
+  t.is(list.map(id).size(), 0);
+});
+
+test('Should map all items from given type number to new type string', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  const toString = (x: number): string => x.toString();
+  const actual = list.map(toString);
+  t.is(actual.size(), 3);
+  t.is(actual.get(0), '1');
+  t.is(actual.get(1), '2');
+  t.is(actual.get(2), '3');
+});
+
+test('Should map all items from given type number to number', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  const double = (x: number): number => x * 2;
+  const actual = list.map(double);
+  t.is(actual.size(), 3);
+  t.is(actual.get(0), 2);
+  t.is(actual.get(1), 4);
+  t.is(actual.get(2), 6);
+});
