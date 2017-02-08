@@ -102,4 +102,7 @@ export default class LinkedList<T> {
     return size;
   }
 
+  toArray(): Array<T> {
+    return Array.from({ length: this.size() }).map((_, i) => this.get(i));
+  }
 }

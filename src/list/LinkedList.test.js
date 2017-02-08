@@ -183,3 +183,13 @@ test('Should create list with given array of data', t => {
   t.is(list.get(1), 2);
   t.is(list.get(2), 3);
 });
+
+test('Should return empty array when list is empty', t => {
+  const list: List<number> = new LinkedList();
+  t.deepEqual(list.toArray(), []);
+});
+
+test('Should return array of given values when list is not empty', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  t.deepEqual(list.toArray(), [1, 2, 3]);
+});
