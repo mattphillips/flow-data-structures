@@ -193,3 +193,31 @@ test('Should return array of given values when list is not empty', t => {
   const list: List<number> = new LinkedList([1, 2, 3]);
   t.deepEqual(list.toArray(), [1, 2, 3]);
 });
+
+test('Should return empty list when filtering an empty list', t => {
+  const list: List<number> = new LinkedList();
+
+  const isEven = (x: number): boolean => x % 2 === 0;
+
+  const actual = list.filter(isEven);
+  t.is(actual.size(), 0);
+});
+
+test('Should return empty list when no items fullfil given predicate', t => {
+  const list: List<number> = new LinkedList([1, 3, 5]);
+
+  const isEven = (x: number): boolean => x % 2 === 0;
+
+  const actual = list.filter(isEven);
+  t.is(actual.size(), 0);
+});
+
+test('Should return list of items that fullfil given predicate', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+
+  const isEven = (x: number): boolean => x % 2 === 0;
+
+  const actual = list.filter(isEven);
+  t.is(actual.size(), 1);
+  t.is(actual.get(0), 2);
+});

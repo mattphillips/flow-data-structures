@@ -105,4 +105,8 @@ export default class LinkedList<T> {
   toArray(): Array<T> {
     return Array.from({ length: this.size() }).map((_, i) => this.get(i));
   }
+
+  filter(predicate: T => boolean): LinkedList<T> {
+    return new LinkedList(this.toArray().filter(predicate));
+  }
 }
