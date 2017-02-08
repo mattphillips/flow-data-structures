@@ -1,11 +1,20 @@
 // @flow
 import Node from '../Node';
 
+type U<T> = Array<T> | T;
+
 export default class LinkedList<T> {
 
   nodes: Node<T>;
-  constructor() {
-    this.nodes = null;
+  constructor(data: ?U<T>) {
+    if (Array.isArray(data))
+      data.forEach(t => this.add(t));
+
+    else if (data !== undefined)
+      this.nodes = new Node(data, null);
+
+    else
+      this.nodes = null;
   }
 
   add(item: T): void {

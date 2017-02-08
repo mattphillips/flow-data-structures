@@ -163,3 +163,23 @@ test('Should set parent node to removed nodes next entry from a list of size gre
   t.is(list.size(), 2);
   t.is(list.nodes.getNext().getData(), 'C');
 });
+
+test('Should create an empty list when no data is supplied', t => {
+  const list: List<string> = new LinkedList();
+  t.is(list.size(), 0);
+  t.is(list.nodes, null);
+});
+
+test('Should created list with given data of one value', t => {
+  const list: List<string> = new LinkedList('hello');
+  t.is(list.size(), 1);
+  t.is(list.get(0), 'hello');
+});
+
+test('Should create list with given array of data', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  t.is(list.size(), 3);
+  t.is(list.get(0), 1);
+  t.is(list.get(1), 2);
+  t.is(list.get(2), 3);
+});
