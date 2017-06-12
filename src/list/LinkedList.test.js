@@ -253,3 +253,17 @@ test('Should reduce numbers with to an a single number without an initial value'
   const sum = (acc: number, item: number): number => acc + item;
   t.is(list.reduce(sum), 6);
 });
+
+test('Should reduce numbers with to an a single number with an initial value', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  const sum = (acc: number, item: number): number => acc + item;
+  const initial = 0;
+  t.is(list.reduceInitial(sum, initial), 6);
+});
+
+test('Should reduce numbers to a string representation with an initial value', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  const concat = (acc: string, item: number): string => acc + item.toString();
+  const initial = '';
+  t.is(list.reduceInitial(concat, initial), '123');
+});

@@ -10,5 +10,6 @@ export interface List<T> {
   toArray(): Array<T>,
   filter(predicate: T => boolean): List<T>,
   map<S>(fn: T => S): List<S>,
-  reduce(fn: (T, T) => T): T
+  reduce(fn: (T, T) => T): T,
+  reduceInitial<S>(fn: (S, T) => S, initial: S): S
 };

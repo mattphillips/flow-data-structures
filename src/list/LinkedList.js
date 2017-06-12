@@ -123,4 +123,8 @@ export default class LinkedList<T> implements List<T> {
   reduce(fn: (T, T) => T): T {
     return this.toArray().reduce(fn);
   }
+
+  reduceInitial<S>(fn: (S, T) => S, initial: S): S {
+    return this.toArray().reduce(fn, initial);
+  }
 }
