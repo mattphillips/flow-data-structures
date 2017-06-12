@@ -4,6 +4,7 @@
   "description": "Common data structures implemented using Flow types",
   "main": "index.js",
   "scripts": {
+    "build": "babel src/ -d lib/",
     "flow": "flow check",
     "test": "nyc ava --v",
     "test:coverage": "nyc --reporter=lcov npm t",
@@ -12,13 +13,13 @@
   "author": "Matt Phillips",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^0.18.1",
-    "babel-cli": "^6.22.2",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "babel-preset-es2015": "^6.22.0",
+    "ava": "^0.19.1",
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "coveralls": "^2.11.16",
-    "flow-bin": "^0.38.0",
-    "nyc": "^10.1.2"
+    "flow-bin": "^0.47.0",
+    "nyc": "^11.0.2"
   },
   "ava": {
     "babel": "inherit",
@@ -28,10 +29,8 @@
   },
   "babel": {
     "presets": [
-      "es2015"
-    ],
-    "plugins": [
-      "transform-flow-strip-types"
+      "es2015",
+      "flow"
     ]
   }
 }
