@@ -1,12 +1,16 @@
 // @flow
+
+import { List } from './List';
 import Node from '../Node';
 
 type U<T> = Array<T> | T;
 
-export default class LinkedList<T> {
+export default class LinkedList<T> implements List<T> {
 
   nodes: Node<T>;
+
   constructor(data: ?U<T>) {
+
     if (Array.isArray(data))
       data.forEach(t => this.add(t));
 
@@ -18,6 +22,7 @@ export default class LinkedList<T> {
   }
 
   add(item: T): void {
+
     const next: Node<T> = new Node(item, null);
 
     if (this.nodes == null) {
@@ -84,6 +89,7 @@ export default class LinkedList<T> {
   }
 
   size(): number {
+
     let size: number = 0;
 
     if (this.nodes == null) {
@@ -112,5 +118,9 @@ export default class LinkedList<T> {
 
   map<S>(fn: T => S): LinkedList<S> {
     return new LinkedList(this.toArray().map(fn));
+  }
+
+  reduce(fn: (T, T) => T): T {
+    return this.toArray().reduce(fn);
   }
 }

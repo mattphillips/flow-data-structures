@@ -247,3 +247,9 @@ test('Should map all items from given type number to number', t => {
   t.is(actual.get(1), 4);
   t.is(actual.get(2), 6);
 });
+
+test('Should reduce numbers with to an a single number without an initial value', t => {
+  const list: List<number> = new LinkedList([1, 2, 3]);
+  const sum = (acc: number, item: number): number => acc + item;
+  t.is(list.reduce(sum), 6);
+});

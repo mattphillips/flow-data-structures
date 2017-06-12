@@ -9,6 +9,6 @@ export interface List<T> {
   size(): number,
   toArray(): Array<T>,
   filter(predicate: T => boolean): List<T>,
-  map<S>(fn: T => S): List<S>
+  map<S>(fn: T => S): List<S>,
+  reduce(fn: (T, T) => T): T
 };
-
